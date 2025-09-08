@@ -195,8 +195,14 @@
             gap: 1rem;
             max-width: 450px;
             margin: 0 auto 2rem;
-            flex-wrap: wrap;
             justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .waitlist-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
         }
 
         .email-input {
@@ -272,43 +278,6 @@
 
         @keyframes fadeIn {
             to { opacity: 1; }
-        }
-
-        /* Animated elements */
-        .floating-card {
-            position: absolute;
-            background: linear-gradient(135deg, 
-                rgba(140, 95, 62, 0.1) 0%, 
-                rgba(125, 139, 111, 0.1) 100%);
-            border: 1px solid rgba(243, 239, 234, 0.1);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-
-        .card-1 {
-            width: 300px;
-            height: 400px;
-            top: 10%;
-            right: 5%;
-            animation: float1 15s ease-in-out infinite;
-        }
-
-        .card-2 {
-            width: 250px;
-            height: 350px;
-            bottom: 10%;
-            left: 5%;
-            animation: float2 18s ease-in-out infinite;
-        }
-
-        @keyframes float1 {
-            0%, 100% { transform: translateY(0) rotate(2deg); }
-            50% { transform: translateY(-20px) rotate(-2deg); }
-        }
-
-        @keyframes float2 {
-            0%, 100% { transform: translateY(0) rotate(-3deg); }
-            50% { transform: translateY(-30px) rotate(3deg); }
         }
 
         /* Ticker */
@@ -513,20 +482,14 @@
 
     <script>
         // IMPORTANT: Replace with your Google Apps Script Web App URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTBOqH4RorO5FuSe4WwT5x2WTW1lYHHomn4xj-z-xNlJXbVFM4Fx621kJrD7DXc-Ce9A/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
 
         // Parallax effect on mouse move
         document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.floating-card');
             const grid = document.querySelector('.cutting-grid');
             
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
-            
-            cards.forEach((card, index) => {
-                const speed = (index + 1) * 10;
-                card.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
             
             // Subtle grid movement
             if (grid) {
@@ -613,4 +576,3 @@
     </script>
 </body>
 </html>
- 
